@@ -10,12 +10,13 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MySql.Data.MySqlClient;
 
 namespace Form2___Lect_Escr_de_archivos
 {
     public partial class Form1 : Form
     {
+        string conexionSQL = "Server=localhost;Port=3306;Database=DatosFormulario;Uid=root;Pwd=Edu.PPul040912";
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,28 @@ namespace Form2___Lect_Escr_de_archivos
             tbEstatura.Leave+=checkEstatura;
             tbTelefono.Leave+=checkTelefono;
         }
+        private void InsertarRegistro(string nombres,string apellidos,string edad,string estatura,string telefono,string genero)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conexionSQL))
+            {
+                connection.Open();
+                string insertQuery = "insert into tabla (nombres, apellidos, telefono, estatura, edad, genero)" + "(@nombres, @apellidos, @telefono, @estatura, @edad, @genero)";
 
+                using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@nombres", nombres);
+                    insertCommand.Parameters.AddWithValue("@apellidos", apellidos);
+                    insertCommand.Parameters.AddWithValue("@telefono", telefono);
+                    insertCommand.Parameters.AddWithValue("@estatura", estatura);
+                    insertCommand.Parameters.AddWithValue("@edad", edad);
+                    insertCommand.Parameters.AddWithValue("@genero", genero);
+
+                    insertCommand.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+
+        }
         private bool isValidInt(string str)
         {
             int resultado;
@@ -142,7 +164,7 @@ namespace Form2___Lect_Escr_de_archivos
             string datos = $"Nombres: {nombres}\r\nApellidos: {apellidos}\r\nTelefono: {telefono} \r\nEstatura: {estatura} cm\r\nEdad: {edad} años\r\nGenero: {genero}";
 
             string rutaArchivo = "C:\\Users\\eduso\\Desktop\\P.A\\C# PA\\datos.txt";
-            File.WriteAllText(rutaArchivo, datos);
+            //File.WriteAllText(rutaArchivo, datos);
 
             bool ArchivoExiste = File.Exists(rutaArchivo);
             using (StreamWriter writer = new StreamWriter(rutaArchivo, true))
@@ -153,6 +175,7 @@ namespace Form2___Lect_Escr_de_archivos
                 }
                 writer.WriteLine(datos);
             }
+            InsertarRegistro(nombres, apellidos, edad, estatura, telefono, genero);
             MessageBox.Show("Datos guardados:\n\n" + datos, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
