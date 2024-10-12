@@ -16,7 +16,7 @@ namespace Form2___Lect_Escr_de_archivos
 {
     public partial class Form1 : Form
     {
-        string conexionSQL = "Server=localhost;Port=3306;Database=DatosFormulario;Uid=root;Pwd=Edu.PPul040912";
+        
         public Form1()
         {
             InitializeComponent();
@@ -26,12 +26,14 @@ namespace Form2___Lect_Escr_de_archivos
             tbEstatura.Leave+=checkEstatura;
             tbTelefono.Leave+=checkTelefono;
         }
-        private void InsertarRegistro(string nombres,string apellidos,string edad,string estatura,string telefono,string genero)
+        string connectionSQL = "Server = localhost ; Port = 3306 ; Database = datosformulario ; Uid = root ; Password = PswrdSQL091204";
+        void InsertarRegistro(string nombres,string apellidos,int edad,float estatura,long telefono,string genero)
         {
-            using (MySqlConnection connection = new MySqlConnection(conexionSQL))
+            using (MySqlConnection connection = new MySqlConnection(connectionSQL))
             {
                 connection.Open();
-                string insertQuery = "insert into tabla (nombres, apellidos, telefono, estatura, edad, genero)" + "(@nombres, @apellidos, @telefono, @estatura, @edad, @genero)";
+                string insertQuery = "insert into tabla (nombres, apellidos, telefono, estatura, edad, genero)" +
+                    "values (@nombres, @apellidos, @telefono, @estatura, @edad, @genero)";
 
                 using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
                 {
@@ -43,8 +45,10 @@ namespace Form2___Lect_Escr_de_archivos
                     insertCommand.Parameters.AddWithValue("@genero", genero);
 
                     insertCommand.ExecuteNonQuery();
+
+                    connection.Close();
                 }
-                connection.Close();
+                
             }
 
         }
@@ -144,12 +148,12 @@ namespace Form2___Lect_Escr_de_archivos
             int edad;
             float estatura;
             long telefono;
-            
+            nombres = tbNombres.Text;
+            apellidos = tbApellidos.Text;
             edad = int.Parse(tbEdad.Text);
             estatura = float.Parse(tbEstatura.Text);
             telefono = long.Parse(tbTelefono.Text);
-            nombres = tbNombres.Text;
-            apellidos = tbApellidos.Text;
+            
 
             string genero = "";
             if (rbHombre.Checked)
@@ -165,17 +169,20 @@ namespace Form2___Lect_Escr_de_archivos
 
             string rutaArchivo = "C:\\Users\\eduso\\Desktop\\P.A\\C# PA\\datos.txt";
             //File.WriteAllText(rutaArchivo, datos);
-
+            
             bool ArchivoExiste = File.Exists(rutaArchivo);
             using (StreamWriter writer = new StreamWriter(rutaArchivo, true))
             {
                 if (ArchivoExiste)
                 {
-                    writer.WriteLine();
+                    writer.WriteLine("");
                 }
+                
                 writer.WriteLine(datos);
             }
+
             InsertarRegistro(nombres, apellidos, edad, estatura, telefono, genero);
+
             MessageBox.Show("Datos guardados:\n\n" + datos, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }

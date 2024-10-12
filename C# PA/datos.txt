@@ -1,12 +1,40 @@
-Nombres: Eduardo
-Apellidos: Pulido
-Telefono: 9631258602 
-Estatura: 1.7 cm
-Edad: 19 años
+Nombres: prueba
+Apellidos: num
+Telefono: 1111111111 
+Estatura: 1.11 cm
+Edad: 1 años
+Genero: Mujer
+Nombres: prueba
+Apellidos: num
+Telefono: 1111111111 
+Estatura: 1.11 cm
+Edad: 1 años
+Genero: Mujer
+
+Nombres: prueba
+Apellidos: num
+Telefono: 2222222222 
+Estatura: 1.2 cm
+Edad: 2 años
 Genero: Hombre
+
+Nombres: prueba 
+Apellidos: num
+Telefono: 3333333333 
+Estatura: 1.33 cm
+Edad: 3 años
+Genero: Mujer
+
+Nombres: ee
+Apellidos: ww
+Telefono: 1234567890 
+Estatura: 1.23 cm
+Edad: 12 años
+Genero: Mujer
+
 Nombres: Eduardo
 Apellidos: Pulido
 Telefono: 9631258602 
-Estatura: 1.7 cm
+Estatura: 1.75 cm
 Edad: 19 años
 Genero: Hombre
