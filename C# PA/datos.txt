@@ -38,3 +38,10 @@ Telefono: 9631258602
 Estatura: 1.75 cm
 Edad: 19 años
 Genero: Hombre
+
+Nombres: Eduardo
+Apellidos: Pulido
+Telefono: 9631258602 
+Estatura: 1.76 cm
+Edad: 19 años
+Genero: Hombre

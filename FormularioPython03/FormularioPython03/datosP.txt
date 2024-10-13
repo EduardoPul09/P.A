@@ -1,0 +1,42 @@
+Nombre: Eduardo
+Apellidos: Pulido
+Edad: 19
+Estatura: 1.76
+Telefono: 9631258602
+Genero: Hombre
+
+Nombre: Edu
+Apellidos: Pul
+Edad: 20
+Estatura: 1.77
+Telefono: 9631258602
+Genero: Hombre
+
+Nombre: Eduardo
+Apellidos: Pulido
+Edad: 20
+Estatura: 1.77
+Telefono: 9631258602
+Genero: Hombre
+
+Nombre: Edu
+Apellidos: Pul
+Edad: 19
+Estatura: 1.76
+Telefono: 9631258602
+Genero: Hombre
+
+Nombre: Edu
+Apellidos: Pul
+Edad: 19
+Estatura: 1.76
+Telefono: 9631258602
+Genero: Hombre
+
+Nombre: Silvia
+Apellidos: Duran
+Edad: 50
+Estatura: 1.60
+Telefono: 7894561230
+Genero: Mujer
+
